@@ -8,6 +8,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { StocksComponent } from '../stocks/stocks.component'
 import { BulletinComponent } from '../bulletin/bulletin.component'
+import { TradesComponent } from '../trades/trades.component'
+import { LeaderboardComponent } from '../leaderboard/leaderboard.component'
 
 @Component({
 	selector: 'app-dashboard',
@@ -20,18 +22,18 @@ export class DashboardComponent implements AfterViewInit {
 		map(({ matches }) => {
 			if (matches) {
 				return [
-					{ title: 'Stonks 📈', cols: 2, rows: 2, card_id: 'container1', component: StocksComponent },
-					{ title: 'Card 2', cols: 1, rows: 1, card_id: 'container2', component: BulletinComponent },
-					{ title: 'Card 3', cols: 1, rows: 1, card_id: 'container3', component: BulletinComponent },
-					{ title: 'Card 4', cols: 1, rows: 1, card_id: 'container4', component: BulletinComponent }
+					{ title: 'Island Bulletin', cols: 2, rows: 2, card_id: 'container1', component: BulletinComponent },
+					{ title: 'Stonks', cols: 2, rows: 1, card_id: 'container2', component: StocksComponent },
+					{ title: 'Trades', cols: 1, rows: 1, card_id: 'container3', component: TradesComponent },
+					{ title: 'Leaderboard', cols: 1, rows: 1, card_id: 'container4', component: LeaderboardComponent }
 				];
 			}
 
 			return [
-				{ title: 'Stonks', cols: 2, rows: 2, card_id: 'container1', component: StocksComponent },
-				{ title: 'Card 2', cols: 1, rows: 1, card_id: 'container2', component: BulletinComponent },
-				{ title: 'Card 3', cols: 1, rows: 2, card_id: 'container3', component: BulletinComponent },
-				{ title: 'Card 4', cols: 1, rows: 1, card_id: 'container4', component: BulletinComponent }
+				{ title: 'Island Bulletin', cols: 2, rows: 2, card_id: 'container1', component: BulletinComponent },
+				{ title: 'Stonks', cols: 1, rows: 2, card_id: 'container2', component: StocksComponent },
+				{ title: 'Trades', cols: 1, rows: 1, card_id: 'container3', component: TradesComponent },
+				{ title: 'Leaderboard', cols: 1, rows: 1, card_id: 'container4', component: LeaderboardComponent }
 			];
 		})
 	);

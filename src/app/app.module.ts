@@ -13,13 +13,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { StocksComponent } from './stocks/stocks.component';
 import { BulletinComponent } from './bulletin/bulletin.component';
+import { TradesComponent } from './trades/trades.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		DashboardComponent,
 		StocksComponent,
-		BulletinComponent
+		BulletinComponent,
+		TradesComponent,
+		LeaderboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -30,7 +37,10 @@ import { BulletinComponent } from './bulletin/bulletin.component';
 		MatMenuModule,
 		MatIconModule,
 		MatButtonModule,
-		LayoutModule
+		LayoutModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule
 	],
 	entryComponents: [StocksComponent, BulletinComponent],
 	providers: [],

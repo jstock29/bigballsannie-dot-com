@@ -7,21 +7,47 @@ var Highcharts = require('highcharts/highstock');
 	styleUrls: ['./stocks.component.scss']
 })
 export class StocksComponent implements OnInit {
-	money = 100.00;
+	money: number;
+	beets: number;
 	trades = [];
-	current_price = 0;
+	current_price: number;
 
 	constructor() { }
 
-	trade(type: string) {
+	updatePrice(price) {
+		this.current_price = price;
+	}
+
+	trade(type) {
 		if (type === 'buy') {
+			if (this.money < this.current_price) {
+				console.log('NOT ENOUGH MONEY')
+			} else {
+				this.beets = Math.floor(this.money / this.current_price)
+				this.money = this.money - (this.beets * this.current_price)
+				console.log('bought ', this.beets, ' beets at ', this.current_price, 'per beet')
+			}
+		} else if (type === 'sell') {
+			if (this.beets === 0) {
+				console.log('NO BEETS TO SELL')
+			} else {
+				const sale_value = this.beets * this.current_price
+				console.log('sold for $', sale_value)
 
-		} else {
-
+				this.money = this.money + sale_value
+				this.beets = 0
+			}
 		}
 	}
 
 	ngOnInit(): void {
+		const that = this;
+		this.money = 100.00
+		this.beets = 0
+		function getRandomArbitrary(min, max) {
+			return Math.random() * (max - min) + min;
+		}
+
 		let momentum = 1.0;
 		let count = 0
 
@@ -33,15 +59,20 @@ export class StocksComponent implements OnInit {
 					load: function() {
 						// set up the updating of the chart each second
 						var series = this.series[0];
-						console.log(series.yData[0])
 						this.current_price = series.yData[0]
+						console.log('Starting Price:', this.current_price)
+						let price = this.current_price;
 
 						setInterval(function() {
-							var time = (new Date()).getTime(), // current time
-								price = this.current_price + (Math.round((Math.random() - 1) * 100) * momentum);
+							let time = (new Date()).getTime() // current time
+							let change = (Math.round(getRandomArbitrary(-20, 20)) * momentum)
+							price = price + (Math.round(getRandomArbitrary(-20, 20)) * momentum);
+							if (price < 0) {
+								price = 0
+							}
 							series.addPoint([time, price], true, true);
-							this.current_price = price
-						}, 1000);
+							that.updatePrice(price)
+						}, Math.round(getRandomArbitrary(500, 1250)));
 					}
 				}
 			},
@@ -86,7 +117,7 @@ export class StocksComponent implements OnInit {
 					for (i = -60; i <= 0; i += 1) {
 						data.push([
 							time + i * 1000,
-							Math.round(Math.random() * 100)
+							Math.round(getRandomArbitrary(30, 70))
 						]);
 					}
 					return data;
