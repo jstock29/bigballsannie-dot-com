@@ -1,43 +1,38 @@
-<div class="grid-container" fxLayout="column">
-  <mat-grid-list cols="2" rowHeight="300px">
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <app-bulletin></app-bulletin>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
+<div class="grid-container" fxLayout="column" fxLayoutGap="16px" fxFlex>
+  <div fxFlex=100>
+    <mat-card class="dashboard-card" fxFlex>
+      <mat-card-content>
+        <app-bulletin></app-bulletin>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="8px" fxFlex=50>
+    <div fxFlex=50>
       <mat-card class="dashboard-card">
         <mat-card-header>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <app-stocks></app-stocks>
-          <!-- <ng-template #dynamicInsert2></ng-template> -->
         </mat-card-content>
       </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <mat-card class="dashboard-card">
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="8px" fxFlex=50>
+      <mat-card class="dashboard-card" fxFlex=50>
         <mat-card-header>
+          Trades
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <app-trades></app-trades>
-          <!-- <ng-template #dynamicInsert3></ng-template> -->
         </mat-card-content>
       </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <mat-card class="dashboard-card">
+      <mat-card class="dashboard-card" fxFlex=50>
         <mat-card-header>
+          Leaderboard
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <app-leaderboard></app-leaderboard>
-          <!-- <ng-template #dynamicInsert4></ng-template> -->
         </mat-card-content>
       </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </div>
 </div>

@@ -1,15 +1,18 @@
 .grid-container {
-  margin: 20px;
+  // margin: 20px;
+  min-height: 100vh;
+  height: 100%;
+  max-width: 100vw;
 }
 
 .dashboard-card {
   overflow: hidden;
   padding: 0;
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  // position: absolute;
+  // top: 15px;
+  // left: 15px;
+  // right: 15px;
+  // bottom: 15px;
 }
 
 mat-card {
