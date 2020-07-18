@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { TradesDataSource } from '../trades/trades-datasource';
 var Highcharts = require('highcharts/highstock');
 
 @Component({
@@ -8,11 +10,12 @@ var Highcharts = require('highcharts/highstock');
 })
 export class StocksComponent implements OnInit {
 	money: number;
-	beets: number;
-	trades = [];
+	turnips: number;
 	current_price: number;
 
-	constructor() { }
+	constructor(private ds: DataService, private tds: TradesDataSource) {
+
+	}
 
 	updatePrice(price) {
 		this.current_price = price;
@@ -23,27 +26,36 @@ export class StocksComponent implements OnInit {
 			if (this.money < this.current_price) {
 				console.log('NOT ENOUGH MONEY')
 			} else {
-				this.beets = Math.floor(this.money / this.current_price)
-				this.money = this.money - (this.beets * this.current_price)
-				console.log('bought ', this.beets, ' beets at ', this.current_price, 'per beet')
+				this.turnips = Math.floor(this.money / this.current_price)
+				this.money = this.money - (this.turnips * this.current_price)
+				console.log('bought ', this.turnips, ' turnips at ', this.current_price, 'per beet')
+				this.ds.trades.unshift({ type: 'buy', quantity: this.turnips, price: this.current_price })
+				this.tds.data.unshift({ type: 'buy', quantity: this.turnips, price: this.current_price })
+
 			}
 		} else if (type === 'sell') {
-			if (this.beets === 0) {
-				console.log('NO BEETS TO SELL')
+			if (this.turnips === 0) {
+				console.log('NO TURNIPS TO SELL')
 			} else {
-				const sale_value = this.beets * this.current_price
+				const sale_value = this.turnips * this.current_price
 				console.log('sold for $', sale_value)
-
+				this.ds.trades.unshift({ type: 'sell', quantity: this.turnips, price: this.current_price })
+				this.tds.data.unshift({ type: 'sell', quantity: this.turnips, price: this.current_price })
 				this.money = this.money + sale_value
-				this.beets = 0
+				this.turnips = 0
 			}
 		}
+
+		console.log(this.tds.data)
 	}
 
 	ngOnInit(): void {
 		const that = this;
+
 		this.money = 100.00
-		this.beets = 0
+		this.turnips = 0
+		this.current_price = 0;
+
 		function getRandomArbitrary(min, max) {
 			return Math.random() * (max - min) + min;
 		}
@@ -53,7 +65,6 @@ export class StocksComponent implements OnInit {
 
 		// Create the chart
 		Highcharts.stockChart('container', {
-
 			chart: {
 				events: {
 					load: function() {
@@ -67,20 +78,18 @@ export class StocksComponent implements OnInit {
 							let time = (new Date()).getTime() // current time
 							let change = (Math.round(getRandomArbitrary(-20, 20)) * momentum)
 							price = price + (Math.round(getRandomArbitrary(-20, 20)) * momentum);
-							if (price < 0) {
-								price = 0
+							if (price < 1) {
+								price = 1
 							}
 							series.addPoint([time, price], true, true);
 							that.updatePrice(price)
-						}, Math.round(getRandomArbitrary(500, 1250)));
+						}, Math.round(getRandomArbitrary(750, 1750)));
 					}
 				}
 			},
-
 			time: {
 				useUTC: false
 			},
-
 			rangeSelector: {
 				buttons: [{
 					count: 1,
@@ -97,15 +106,12 @@ export class StocksComponent implements OnInit {
 				inputEnabled: false,
 				selected: 0
 			},
-
 			title: {
 				text: 'The Stonk Market'
 			},
-
 			exporting: {
 				enabled: false
 			},
-
 			series: [{
 				name: 'Stonk Price',
 				data: (function() {

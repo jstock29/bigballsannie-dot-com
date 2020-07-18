@@ -1,15 +1,91 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+
+export interface ImageData {
+	path: string;
+}
 
 @Component({
-  selector: 'app-bulletin',
-  templateUrl: './bulletin.component.html',
-  styleUrls: ['./bulletin.component.scss']
+	selector: 'app-bulletin',
+	templateUrl: './bulletin.component.html',
+	styleUrls: ['./bulletin.component.scss']
 })
 export class BulletinComponent implements OnInit {
+	public innerWidth: number;
+	public images: any;
+	constructor(public dialog: MatDialog) {
+		this.innerWidth = window.innerWidth;
+	}
 
-  constructor() { }
+	getRandomArbitrary(min, max) {
+		return Math.random() * (max - min) + min;
+	}
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+		this.innerWidth = window.innerWidth;
+		this.images = [
+			{
+				path: '../../assets/images/bba.jpg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/annie_cute.jpg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/annie_cute_2.jpg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/bba5.jpg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/creepy_annie.png',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/beer_annie.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/bba3.jpg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/bby_annie.png',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/booby.png',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+			}
+		]
+
+	}
+
+	expandImage(path) {
+		const dialogRef = this.dialog.open(ImageDialog, {
+			width: '85vh',
+			panelClass: "full-image",
+			// height: '100%',
+			// disableClose: true,
+			// backdropClass: 'blackout-backdrop',
+			data: {
+				path: path
+			}
+		});
+	}
+
+}
+
+@Component({
+	selector: 'image-dialog',
+	templateUrl: 'image-dialog.html',
+})
+export class ImageDialog {
+	constructor(public dialogRef: MatDialogRef<ImageDialog>,
+		@Inject(MAT_DIALOG_DATA) public data: ImageData) { console.log(data) }
 
 }

@@ -16,14 +16,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 import { StocksComponent } from './stocks/stocks.component';
 import { BulletinComponent } from './bulletin/bulletin.component';
 import { TradesComponent } from './trades/trades.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
+import { TradesDataSource } from './trades/trades-datasource';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
@@ -39,6 +41,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 	imports: [
 		BrowserModule,
 		FormsModule,
+		FlexLayoutModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		MatGridListModule,
@@ -56,7 +59,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 		DragDropModule
 	],
 	entryComponents: [StocksComponent, BulletinComponent, TradesComponent, LeaderboardComponent, EntryDialog],
-	providers: [],
+	providers: [TradesDataSource],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

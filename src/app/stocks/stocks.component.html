@@ -4,10 +4,9 @@
 </div>
 <div>
   <h4>${{money}}</h4>
-  <h4>{{beets}} Beets</h4>
+  <h4>{{turnips}} Turnips</h4>
 </div>
 <div>
   <button mat-flat-button color="primary" (click)="trade('buy')" [disabled]="money<current_price">Buy</button>
-  <button mat-flat-button color="accent" (click)="trade('sell')" [disabled]="beets===0">Sell</button>
-
+  <button mat-flat-button color="accent" (click)="trade('sell')" [disabled]="turnips===0">Sell</button>
 </div>

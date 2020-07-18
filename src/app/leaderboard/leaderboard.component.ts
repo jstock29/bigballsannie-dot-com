@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { LeaderboardDataSource, LeaderboardItem } from './leaderboard-datasource';
 
@@ -10,10 +8,10 @@ import { LeaderboardDataSource, LeaderboardItem } from './leaderboard-datasource
 	styleUrls: ['./leaderboard.component.scss']
 })
 export class LeaderboardComponent implements AfterViewInit, OnInit {
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
 	@ViewChild(MatTable) table: MatTable<LeaderboardItem>;
 	dataSource: LeaderboardDataSource;
+	key = 'AIzaSyCVSE2tCt9j0-Fj_Gjj9zZmbqXFCy76rwY'
+	url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTfPhUS9DCIKZ5-6aMwroCc-_sMoCZGDiZjhQXKQYPydac152FTftnmK6j1uwnbZEbDCcpzeC5MMnWG/pubhtml'
 
 	/** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
 	displayedColumns = ['id', 'name'];
@@ -23,8 +21,6 @@ export class LeaderboardComponent implements AfterViewInit, OnInit {
 	}
 
 	ngAfterViewInit() {
-		this.dataSource.sort = this.sort;
-		this.dataSource.paginator = this.paginator;
 		this.table.dataSource = this.dataSource;
 	}
 }

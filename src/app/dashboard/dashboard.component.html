@@ -1,25 +1,41 @@
-<div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+<div class="grid-container" fxLayout="column">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
       <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button> -->
-            <!-- <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu> -->
-          </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <ng-template *ngIf="card.card_id==='container1'" #dynamicInsert1></ng-template>
-          <ng-template *ngIf="card.card_id==='container2'" #dynamicInsert2></ng-template>
-          <ng-template *ngIf="card.card_id==='container3'" #dynamicInsert3></ng-template>
-          <ng-template *ngIf="card.card_id==='container4'" #dynamicInsert4></ng-template>
-
+          <app-bulletin></app-bulletin>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <app-stocks></app-stocks>
+          <!-- <ng-template #dynamicInsert2></ng-template> -->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <app-trades></app-trades>
+          <!-- <ng-template #dynamicInsert3></ng-template> -->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <app-leaderboard></app-leaderboard>
+          <!-- <ng-template #dynamicInsert4></ng-template> -->
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
