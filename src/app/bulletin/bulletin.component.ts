@@ -19,47 +19,54 @@ export class BulletinComponent implements OnInit {
 	}
 
 	getRandomArbitrary(min, max) {
-		return Math.random() * (max - min) + min;
+		let value = Math.random() * (max - min) + min;
+		console.log(value);
+		if (value > this.innerWidth - 120) {
+			value = value - 120
+		}
+		return value;
 	}
 
 	ngOnInit(): void {
 		this.innerWidth = window.innerWidth;
+		console.log(this.innerWidth);
+
 		this.images = [
 			{
 				path: '../../assets/images/bba.jpg',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
 				path: '../../assets/images/annie_cute.jpg',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
 				path: '../../assets/images/annie_cute_2.jpg',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
 				path: '../../assets/images/bba5.jpg',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
 				path: '../../assets/images/creepy_annie.png',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
 				path: '../../assets/images/beer_annie.jpeg',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
 				path: '../../assets/images/bba3.jpg',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
 				path: '../../assets/images/bby_annie.png',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
 				path: '../../assets/images/booby.png',
-				position: { x: this.getRandomArbitrary(0, this.innerWidth - 150), y: this.getRandomArbitrary(0, 450) }
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			}
 		]
 
@@ -70,7 +77,6 @@ export class BulletinComponent implements OnInit {
 			width: '85vh',
 			panelClass: "full-image",
 			// height: '100%',
-			// disableClose: true,
 			// backdropClass: 'blackout-backdrop',
 			data: {
 				path: path
