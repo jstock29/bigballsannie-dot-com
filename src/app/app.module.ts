@@ -59,7 +59,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 		DragDropModule
 	],
 	entryComponents: [StocksComponent, BulletinComponent, TradesComponent, LeaderboardComponent, EntryDialog],
-	providers: [TradesDataSource],
+	providers: [TradesDataSource, TradesComponent],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

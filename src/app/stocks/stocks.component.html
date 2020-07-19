@@ -10,3 +10,6 @@
   <button mat-flat-button color="primary" (click)="trade('buy')" [disabled]="money<current_price">Buy</button>
   <button mat-flat-button color="accent" (click)="trade('sell')" [disabled]="turnips===0">Sell</button>
 </div>
+<div>
+  <button mat-flat-button color="warn" (click)="reset()">Reset</button>
+</div>

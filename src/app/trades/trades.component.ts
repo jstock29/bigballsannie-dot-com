@@ -1,33 +1,41 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { TradesDataSource, Trade } from './trades-datasource';
-
-
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { DataService, Trade } from '../data.service';
+import { Observable, of, Subject } from 'rxjs';
 @Component({
 	selector: 'app-trades',
 	templateUrl: './trades.component.html',
 	styleUrls: ['./trades.component.scss']
 })
-export class TradesComponent implements AfterViewInit, OnInit {
-	@ViewChild(MatTable) table: MatTable<Trade>;
-	dataSource: TradesDataSource;
+export class TradesComponent {
+	@ViewChild('table') table: MatTable<Trade>;
+	// displayedColumns = ['position', 'name', 'weight', 'symbol'];
+	displayedColumns: string[] = ['type', 'price', 'quantity'];
 
-	constructor() {
+	constructor(private ds: DataService) { }
+	// dataSource = new MatTableDataSource([]);
 
+	applyFilter(filterValue: string) {
+		filterValue = filterValue.trim(); // Remove whitespace
+		filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+		// this.dataSource.filter = filterValue;
 	}
 
-	/** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-	displayedColumns = ['type', 'quantity', 'price'];
 
+	refresh(trades) {
+		let data: Trade[] = [];
+		if (this.table.dataSource) {
+			data = (this.table.dataSource as Trade[]);
+		}
+		// data = this.ds.trades;
+		this.table.dataSource = trades;
+		this.table.renderRows();
+	}
 	ngOnInit() {
-		this.dataSource = new TradesDataSource();
-		this.dataSource.connect();
-	}
-
-	ngAfterViewInit() {
-
-		this.table.dataSource = this.dataSource;
+		this.ds.tradesSubject.subscribe((data) => {
+			this.refresh(data);
+		})
 	}
 }

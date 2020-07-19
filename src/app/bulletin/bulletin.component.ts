@@ -20,7 +20,6 @@ export class BulletinComponent implements OnInit {
 
 	getRandomArbitrary(min, max) {
 		let value = Math.random() * (max - min) + min;
-		console.log(value);
 		if (value > this.innerWidth - 120) {
 			value = value - 120
 		}
@@ -29,7 +28,6 @@ export class BulletinComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.innerWidth = window.innerWidth;
-		console.log(this.innerWidth);
 
 		this.images = [
 			{

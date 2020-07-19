@@ -6,7 +6,8 @@ html {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: '#FFFDE7' !important;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 h1,
@@ -16,5 +17,5 @@ h4,
 h5,
 h6,
 p {
-  font-family: 'Comic Neue', cursive !important;
+  font-family: 'Comic Neue', cursive,sans-serif !important;
 }
