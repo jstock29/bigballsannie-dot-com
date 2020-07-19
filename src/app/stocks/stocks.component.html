@@ -3,8 +3,8 @@
   <h3>THE PRICE IS CURRENTLY ${{current_price}}</h3>
 </div>
 <div>
-  <h4>${{money}}</h4>
-  <h4>{{turnips}} Turnips</h4>
+  <h4>${{ds.money}}</h4>
+  <h4>{{ds.turnips}} Turnips</h4>
 </div>
 <div>
   <button mat-flat-button color="primary" (click)="trade('buy')" [disabled]="money<current_price">Buy</button>

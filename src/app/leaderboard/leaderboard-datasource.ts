@@ -2,31 +2,23 @@ import { DataSource } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
-// TODO: Replace this with your own data model type
-export interface LeaderboardItem {
+export interface Person {
 	name: string;
-	id: number;
+	score: number;
+	date: string;
 }
 
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: LeaderboardItem[] = [
-	{ id: 1, name: 'Hydrogen' },
-	{ id: 2, name: 'Helium' },
-	{ id: 3, name: 'Lithium' },
-	{ id: 4, name: 'Beryllium' },
-	{ id: 5, name: 'Boron' },
-];
-
 /**
- * Data source for the Leaderboard view. This class should
+ * Data source for the Personboard view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class LeaderboardDataSource extends DataSource<LeaderboardItem> {
-	data: LeaderboardItem[] = EXAMPLE_DATA;
+export class LeaderboardDataSource extends DataSource<Person> {
+	data: Person[] = [];
 
-	constructor() {
+	constructor(d) {
 		super();
+		this.data = d;
 	}
 
 	/**
@@ -34,7 +26,7 @@ export class LeaderboardDataSource extends DataSource<LeaderboardItem> {
 	 * the returned stream emits new items.
 	 * @returns A stream of the items to be rendered.
 	 */
-	connect(): Observable<LeaderboardItem[]> {
+	connect(): Observable<Person[]> {
 		// Combine everything that affects the rendered data into one update
 		// stream for the data-table to consume.
 		const dataMutations = [
@@ -61,7 +53,7 @@ export class LeaderboardDataSource extends DataSource<LeaderboardItem> {
 	 * Sort the data (client-side). If you're using server-side sorting,
 	 * this would be replaced by requesting the appropriate data from the server.
 	 */
-	// private getSortedData(data: LeaderboardItem[]) {
+	// private getSortedData(data: PersonboardItem[]) {
 	// 	if (!this.sort.active || this.sort.direction === '') {
 	// 		return data;
 	// 	}

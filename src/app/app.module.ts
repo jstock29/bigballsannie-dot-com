@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, EntryDialog } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -20,7 +21,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 
 import { StocksComponent } from './stocks/stocks.component';
 import { BulletinComponent } from './bulletin/bulletin.component';
@@ -41,6 +41,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 	imports: [
 		BrowserModule,
 		FormsModule,
+		HttpClientModule,
 		FlexLayoutModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,

@@ -9,12 +9,21 @@ var Highcharts = require('highcharts/highstock');
 	styleUrls: ['./stocks.component.scss']
 })
 export class StocksComponent implements OnInit {
-	money: number;
-	turnips: number;
 	current_price: number;
-
+	time: number = 120
 	constructor(private ds: DataService) {
+		this.time = 120;
+	}
 
+	startGame() {
+		var timer = setInterval(function() {
+			if (this.time <= 0) {
+				clearInterval(timer);
+			}
+			// document.getElementById("demo").innerHTML = this.time;
+			console.log(this.time)
+			this.time -= 1;
+		}, 1000);
 	}
 
 	updatePrice(price) {
@@ -28,23 +37,23 @@ export class StocksComponent implements OnInit {
 	trade(type) {
 		let trade: Trade = { type: '', quantity: null, price: null }
 		if (type === 'buy') {
-			if (this.money < this.current_price) {
+			if (this.ds.money < this.current_price) {
 				console.log('NOT ENOUGH MONEY');
 			} else {
-				this.turnips = Math.floor(this.money / this.current_price);
-				trade = { type: 'buy', quantity: this.turnips, price: this.current_price }
-				this.money = this.money - (this.turnips * this.current_price);
-				console.log('bought ', this.turnips, ' turnips at ', this.current_price, 'per beet');
+				this.ds.turnips = Math.floor(this.ds.money / this.current_price);
+				trade = { type: 'buy', quantity: this.ds.turnips, price: this.current_price }
+				this.ds.money = this.ds.money - (this.ds.turnips * this.current_price);
+				console.log('bought ', this.ds.turnips, ' turnips at ', this.current_price, 'per beet');
 			}
 		} else if (type === 'sell') {
-			if (this.turnips === 0) {
+			if (this.ds.turnips === 0) {
 				console.log('NO TURNIPS TO SELL');
 			} else {
-				const sale_value = this.turnips * this.current_price
+				const sale_value = this.ds.turnips * this.current_price
 				console.log('sold for $', sale_value)
-				trade = { type: 'sell', quantity: this.turnips, price: this.current_price }
-				this.money = this.money + sale_value;
-				this.turnips = 0;
+				trade = { type: 'sell', quantity: this.ds.turnips, price: this.current_price }
+				this.ds.money = this.ds.money + sale_value;
+				this.ds.turnips = 0;
 			}
 		}
 		this.ds.addRow(trade);
@@ -53,8 +62,6 @@ export class StocksComponent implements OnInit {
 	ngOnInit(): void {
 		const that = this;
 
-		this.money = 100.00
-		this.turnips = 0
 		this.current_price = 0;
 
 		function getRandomArbitrary(min, max) {
@@ -132,6 +139,7 @@ export class StocksComponent implements OnInit {
 					}())
 				}]
 			});
+		this.startGame()
 	}
 
 }
