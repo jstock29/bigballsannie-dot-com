@@ -5,9 +5,8 @@ html {
 }
 
 body {
-  margin: 0;
-  background: '#FFFDE7' !important;
-  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 6px;
+  font-family: 'Comic Neue', cursive,sans-serif !important;
 }
 
 h1,
@@ -18,4 +17,8 @@ h5,
 h6,
 p {
   font-family: 'Comic Neue', cursive,sans-serif !important;
+}
+
+.error-text {
+  color: red;
 }
