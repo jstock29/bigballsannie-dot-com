@@ -6,7 +6,7 @@ export interface DialogData {
 	problem: string;
 	solution: number;
 	errors: [];
-	error: string
+	error: string;
 }
 
 @Component({
@@ -30,10 +30,10 @@ export class AppComponent implements OnInit {
 
 	tests = [
 		{ question: "Annie has a ball with a volume of 4.19 cubic meters. What is the radius of Annie's ball?", solution: 1 },
-		{ question: "Annie's island has a carrying capacity of 10 villagers", solution: 14 },
-		{ question: "Annie's island has a carrying capacity of 10 villagers", solution: 14 },
-		{ question: "Annie's island has a carrying capacity of 10 villagers", solution: 9 },
-		{ question: "Annie's island has a carrying capacity of 10 villagers", solution: 5 },
+		{ question: "Annie's island has 10 villagers. 4 villagers eat 7 turnips per day, while the other 6 eat 10 turnips per day. If Annie buys 1232 turnips at the Stalk Market, how many days will this feed her villagers?", solution: 14 },
+		{ question: "Solve for x. \nx = 14", solution: 14 },
+		{ question: "", solution: 9 },
+		{ question: "", solution: 5 },
 	]
 	errors = [
 		'Omg WRONG!!',
@@ -67,10 +67,6 @@ export class AppComponent implements OnInit {
 				error: this.error
 			}
 		});
-
-		// dialogRef.afterClosed().subscribe(result => {
-		//
-		// });
 	}
 
 	ngOnInit() {
@@ -85,12 +81,10 @@ export class AppComponent implements OnInit {
 })
 export class EntryDialog {
 	constructor(public dialogRef: MatDialogRef<EntryDialog>,
-		@Inject(MAT_DIALOG_DATA) public data: DialogData) {
-
-	}
+		@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
 	checkAnswer(answer, solution) {
-		this.error = null;
+		this.data.error = null;
 		if (Math.round(parseFloat(answer)) === solution) {
 			this.dialogRef.close()
 		} else if (answer === '1141495') {
@@ -98,9 +92,9 @@ export class EntryDialog {
 		}
 		else {
 			if (answer === '' || answer === null) {
-				this.error = 'Hi yes you must play the game and no there is no other way. On this island we do math.'
+				this.data.error = 'Hi yes you must play the game and no there is no other way. On this island we do math.'
 			} else {
-				this.error = this.errors[Math.floor(Math.random() * this.errors.length)]
+				this.data.error = this.data.errors[Math.floor(Math.random() * this.data.errors.length)]
 			}
 		}
 	}

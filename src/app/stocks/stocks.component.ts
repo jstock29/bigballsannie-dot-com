@@ -10,20 +10,38 @@ var Highcharts = require('highcharts/highstock');
 })
 export class StocksComponent implements OnInit {
 	current_price: number;
-	time: number = 120
-	constructor(private ds: DataService) {
-		this.time = 120;
+	minutes: number;
+	seconds: number;
+	interval: any;
+	timeLimit: number;
+	playing: boolean = false;
+
+	constructor(private ds: DataService) { }
+
+	getPercent(x) {
+		return (x / this.timeLimit) * 100
+	}
+
+	decrement() {
+		this.seconds--;
+		if (this.seconds < 0) {
+			this.seconds = 0
+			this.playing = false;
+		}
 	}
 
 	startGame() {
-		var timer = setInterval(function() {
-			if (this.time <= 0) {
-				clearInterval(timer);
+		this.playing = true;
+		this.minutes = .25;
+		this.seconds = this.minutes * 60;
+		this.timeLimit = this.seconds;
+		this.interval = setInterval(() => {
+			this.decrement();
+			if (!this.playing) {
+				console.log('END GAME')
+				clearInterval(this.interval);
 			}
-			// document.getElementById("demo").innerHTML = this.time;
-			console.log(this.time)
-			this.time -= 1;
-		}, 1000);
+		}, 1000)
 	}
 
 	updatePrice(price) {
@@ -61,7 +79,6 @@ export class StocksComponent implements OnInit {
 
 	ngOnInit(): void {
 		const that = this;
-
 		this.current_price = 0;
 
 		function getRandomArbitrary(min, max) {
@@ -139,7 +156,6 @@ export class StocksComponent implements OnInit {
 					}())
 				}]
 			});
-		this.startGame()
 	}
 
 }

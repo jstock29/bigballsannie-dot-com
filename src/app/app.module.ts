@@ -19,6 +19,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -52,6 +53,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 		MatButtonModule,
 		MatDialogModule,
 		MatFormFieldModule,
+		MatProgressSpinnerModule,
 		MatInputModule,
 		LayoutModule,
 		MatTableModule,
