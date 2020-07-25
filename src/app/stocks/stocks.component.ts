@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, Trade } from '../data.service';
 import { TradesComponent } from '../trades/trades.component';
+import theme from 'highcharts/themes/sunset';
+
 var Highcharts = require('highcharts/highstock');
+theme(Highcharts);
 
 @Component({
 	selector: 'app-stocks',
