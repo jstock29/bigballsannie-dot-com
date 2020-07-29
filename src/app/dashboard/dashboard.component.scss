@@ -13,7 +13,7 @@
   // left: 15px;
   // top: 15px;
   // position: absolute;
-   margin-bottom: 8px;
+  // margin-bottom: 8px;
 }
 
 mat-card {
@@ -30,3 +30,6 @@ mat-card {
   text-align: center;
 }
 
+.gutter-bottom{
+  margin-bottom: 8px;
+}
