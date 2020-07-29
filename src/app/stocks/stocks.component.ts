@@ -134,9 +134,7 @@ export class StocksComponent implements OnInit {
                                 } else {
                                     that.momentum = 1.0;
                                 }
-                                const direction = Math.round(getRandomArbitrary(-1,1));
-                                const change = Math.round(getRandomArbitrary(0, 20) * that.momentum);
-                                console.log(that.momentum, change);
+                                const change = Math.round(getRandomArbitrary(-20, 20) * that.momentum);
                                 price += change;
                                 if (price < 1) {
                                     price = 1;
