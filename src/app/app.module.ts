@@ -28,6 +28,7 @@ import { BulletinComponent } from './bulletin/bulletin.component';
 import { TradesComponent } from './trades/trades.component';
 import { TradesDataSource } from './trades/trades-datasource';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { MathComponent } from './math/math.component';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 		StocksComponent,
 		BulletinComponent,
 		TradesComponent,
-		LeaderboardComponent
+		LeaderboardComponent,
+		MathComponent
 	],
 	imports: [
 		BrowserModule,

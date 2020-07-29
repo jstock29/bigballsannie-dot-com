@@ -1,25 +1,27 @@
-<div id='container' fxFlexFill></div>
-<div layout="row" fxLayoutAlign="space-around center">
-    <div flex layout="column">
-        <p>Current Price</p>
-        <h2>${{currentPrice}}</h2>
+<div class="stock-card">
+    <div id='container' fxFlexFill></div>
+    <div layout="row" fxLayoutAlign="space-around center">
+        <div flex layout="column">
+            <p>Current Price</p>
+            <h2>${{currentPrice}}</h2>
+        </div>
+        <div flex layout="column">
+            <h4>💸 ${{ds.money}}</h4>
+            <h4>🥔 {{ds.turnips}}</h4>
+        </div>
     </div>
-    <div flex layout="column">
-        <h4>💸 ${{ds.money}}</h4>
-        <h4>🥔 {{ds.turnips}}</h4>
+    <div class="buy-sell" layout="row" fxLayoutAlign="space-evenly center">
+        <button *ngIf="!playing" mat-fab class="trade-button" color="primary" (click)="startGame()">Play</button>
+        <button *ngIf="playing" mat-fab class="trade-button" color="primary" (click)="trade('buy')"
+                [disabled]="ds.money<currentPrice">Buy
+        </button>
+        <mat-progress-spinner *ngIf="playing" class="timer" diameter="35" mode="determinate" color="accent"
+                              [value]="getPercent(seconds)"></mat-progress-spinner>
+        <button *ngIf="playing" mat-fab class="trade-button" color="accent" (click)="trade('sell')"
+                [disabled]="ds.turnips===0">Sell
+        </button>
     </div>
-</div>
-<div class="buy-sell" layout="row" fxLayoutAlign="space-evenly center">
-    <button *ngIf="!playing" mat-fab class="trade-button" color="primary" (click)="startGame()">Play</button>
-    <button *ngIf="playing" mat-fab class="trade-button" color="primary" (click)="trade('buy')"
-            [disabled]="ds.money<currentPrice">Buy
-    </button>
-    <mat-progress-spinner *ngIf="playing" class="timer" diameter="35" mode="determinate" color="accent"
-                          [value]="getPercent(seconds)"></mat-progress-spinner>
-    <button *ngIf="playing" mat-fab class="trade-button" color="accent" (click)="trade('sell')"
-            [disabled]="ds.turnips===0">Sell
-    </button>
-</div>
-<div class="reset" *ngIf="playing">
-    <button mat-flat-button color="warn" (click)="reset()">Reset</button>
+    <div class="reset" *ngIf="playing">
+        <button mat-flat-button color="warn" (click)="reset()">Reset</button>
+    </div>
 </div>
