@@ -50,6 +50,7 @@ export class StocksComponent implements OnInit {
     }
 
     startGame() {
+        this.reset();
         // this.renderChart();
         setTimeout(null, 200);
         this.playing = true;
