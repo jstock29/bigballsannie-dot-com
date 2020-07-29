@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
     constructor(public dialog: MatDialog) {
     }
+
     answer: number;
     question: string;
     solution: number;
@@ -29,19 +30,23 @@ export class AppComponent implements OnInit {
             solution: 1
         },
         {
-            question: 'Annie\'s island has 10 villagers. 4 villagers eat 7 turnips per day, while the other 6 eat 10 turnips per day. If Annie buys 1232 turnips at the Stalk Market, how many days will this feed her villagers?',
+            question: 'Annie\'s island has 10 villagers. Four of the villagers eat 7 turnips per day, while the other six eat 10 turnips per day. If Annie buys 1,232 turnips at the Stalk Market, how many days will this feed her villagers?',
             solution: 14
         },
-        {question: 'Solve for x. \nx = 14', solution: 14},
-        {question: '', solution: 9},
-        {question: '', solution: 5},
+        // {
+        //     question: '',
+        //     solution: 14
+        // },
+        // {question: '', solution: 9},
+        // {question: '', solution: 5},
     ];
     errors = [
         'Omg WRONG!!',
         'LOSER!',
         'OLD!',
         'Wow I hate you.',
-        'Only SMART and YOUNG people are allowed on this island'
+        'Only SMART and YOUNG people are allowed on this island!',
+        'C\'mon these are so EASY!'
     ];
 
     title = 'Big Balls Island';
@@ -57,8 +62,7 @@ export class AppComponent implements OnInit {
 
     openDialog() {
         const choiceIndex = Math.floor(Math.random() * this.tests.length);
-        const chosenTest = this.tests[0];
-        // const chosenTest = this.tests[choiceIndex];
+        const chosenTest = this.tests[choiceIndex];
         this.answer = null;
         this.question = chosenTest.question;
         this.solution = chosenTest.solution;
@@ -97,7 +101,7 @@ export class EntryDialog {
         this.data.error = null;
         if (Math.round(parseFloat(answer)) === solution) {
             this.dialogRef.close();
-        } else if (answer === '1141495') {
+        } else if (answer === '1141495' || answer === 'jared') {
             this.dialogRef.close();
         } else {
             if (answer === '' || answer === null) {

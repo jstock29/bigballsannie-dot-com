@@ -1,15 +1,15 @@
 <h1 mat-dialog-title>Welcome to Big Balls Island 🏝</h1>
 <div mat-dialog-content>
-  <h3>In order to enter the island, answer the following very easy math problem:</h3>
-  <div style="background: rgb(235,235,235); padding: 8px; border-radius: 8px;">
-    <p>{{data.question}}</p>
-    <mat-form-field>
-      <mat-label>Answer</mat-label>
-      <input matInput [(ngModel)]="data.answer" cdkFocusInitial>
-    </mat-form-field>
-    <p *ngIf="data.error" class="error-text">{{data.error}}</p>
-  </div>
+    <h3>In order to enter the island, answer the following very easy math problem:</h3>
+    <div style="background: rgb(235,235,235); padding: 8px; border-radius: 8px;">
+        <p>{{data.question}}</p>
+        <mat-form-field>
+            <mat-label>Answer</mat-label>
+            <input matInput [(ngModel)]="data.answer" cdkFocusInitial>
+        </mat-form-field>
+        <p *ngIf="data.error" class="error-text">{{data.error}}</p>
+    </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="accent" (click)="checkAnswer(data.answer, data.solution)">Check</button>
+    <button mat-flat-button color="accent" (click)="checkAnswer(data.answer, data.solution)">Check</button>
 </div>
