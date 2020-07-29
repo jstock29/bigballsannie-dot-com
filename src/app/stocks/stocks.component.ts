@@ -17,6 +17,9 @@ export class StocksComponent implements OnInit {
     interval: any;
     timeLimit: number;
     playing = false;
+    recentTrades: Trade[] = [];
+    momentum = 1.0;
+
 
     constructor(private ds: DataService) {
     }
@@ -34,6 +37,8 @@ export class StocksComponent implements OnInit {
     }
 
     scoreGame() {
+        console.log(this.ds.leaders);
+        console.log(this.ds.money);
         // this.ds.leaders.forEach((leader) => {
         //     console.log(leader);
         //     if (this.ds.money > leader.score) {
@@ -46,7 +51,7 @@ export class StocksComponent implements OnInit {
 
     startGame() {
         // this.renderChart();
-        setTimeout(null, 1000);
+        setTimeout(null, 200);
         this.playing = true;
         this.minutes = .25;
         this.seconds = this.minutes * 60;
@@ -91,6 +96,7 @@ export class StocksComponent implements OnInit {
                 this.ds.turnips = 0;
             }
         }
+        this.recentTrades.push(trade);
         this.ds.addRow(trade);
     }
 
@@ -102,10 +108,7 @@ export class StocksComponent implements OnInit {
             return Math.random() * (max - min) + min;
         }
 
-        //todo: remove old chart bfore reloading a new one
-
-        const momentum = 1.0;
-        const count = 0;
+        // todo: remove old chart before reloading a new one
 
         // Create the chart
         Highcharts.stockChart('container',
@@ -115,14 +118,26 @@ export class StocksComponent implements OnInit {
                         load() {
                             // set up the updating of the chart each second
                             const series = this.series[0];
-                            this.current_price = series.yData[0];
-                            console.log('Starting Price:', this.current_price);
-                            let price = this.current_price;
+                            this.currentPrice = series.yData[0];
+                            console.log('Starting Price:', this.currentPrice);
+                            let price = this.currentPrice;
 
                             setInterval(() => {
                                 const time = (new Date()).getTime(); // current time
-                                const change = (Math.round(getRandomArbitrary(-20, 20)) * momentum);
-                                price = price + (Math.round(getRandomArbitrary(-20, 20)) * momentum);
+                                if (that.recentTrades.length > 0) {
+                                    if (that.recentTrades[0].type === 'buy') {
+                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price / (that.recentTrades[0].price ** 2);
+                                    } else {
+                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price / (that.recentTrades[0].price ** 2);
+                                    }
+                                    that.recentTrades.pop();
+                                } else {
+                                    that.momentum = 1.0;
+                                }
+                                const direction = Math.round(getRandomArbitrary(-1,1));
+                                const change = Math.round(getRandomArbitrary(0, 20) * that.momentum);
+                                console.log(that.momentum, change);
+                                price += change;
                                 if (price < 1) {
                                     price = 1;
                                 }
