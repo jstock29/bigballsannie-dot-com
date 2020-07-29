@@ -1,5 +1,6 @@
 <div class="bulletin-board example-boundary">
-  <div *ngFor="let image of images" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="image.position">
-    <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path) />
-  </div>
+    <div *ngFor="let image of images" class="example-box" cdkDrag cdkDragBoundary=".example-boundary"
+         [cdkDragFreeDragPosition]="image.position">
+        <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path)/>
+    </div>
 </div>
