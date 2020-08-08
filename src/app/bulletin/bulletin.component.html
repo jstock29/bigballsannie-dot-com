@@ -3,4 +3,9 @@
          [cdkDragFreeDragPosition]="image.position">
         <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path)/>
     </div>
+
+    <div *ngFor="let vid of videos" class="example-box" cdkDrag cdkDragBoundary=".example-boundary"
+         [cdkDragFreeDragPosition]="vid.position">
+        <img [src]="vid.path" class="thumbnail-image" (click)=expandImage(vid.path)/>
+    </div>
 </div>

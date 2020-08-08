@@ -14,6 +14,7 @@ export interface ImageData {
 export class BulletinComponent implements OnInit {
     public innerWidth: number;
     public images: any;
+    public videos: any;
 
     constructor(public dialog: MatDialog) {
         this.innerWidth = window.innerWidth;
@@ -68,7 +69,12 @@ export class BulletinComponent implements OnInit {
                 position: {x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450)}
             }
         ];
-
+        this.videos=[
+            // {
+            //     path: '../../assets/videos/bba.jpg',
+            //     position: {x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400)}
+            // },
+        ]
     }
 
     expandImage(path) {
