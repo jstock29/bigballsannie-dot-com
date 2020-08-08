@@ -53,7 +53,6 @@ export class MathComponent implements OnInit {
 
         const operator1 = operators[Math.floor(Math.random() * operators.length)];
         const operator2 = operators[Math.floor(Math.random() * operators.length)];
-        console.log(operator1, operator2);
         this.question = value1.toString() + operator1 + value2.toString() + operator2 + value3 + ' = ?';
 
         let step1;
@@ -61,46 +60,34 @@ export class MathComponent implements OnInit {
         if (operator2 !== ' x ' && operator2 !== ' / ') {
             if (operator1 === ' + ') {
                 step1 = value1 + value2;
-                console.log(step1);
             } else if (operator1 === ' - ') {
                 step1 = value1 - value2;
-                console.log(step1);
             } else if (operator1 === ' x ') {
                 step1 = value1 * value2;
-                console.log(step1);
             } else if (operator1 === ' / ') {
                 step1 = value1 / value2;
-                console.log(step1);
             }
             if (operator2 === ' + ') {
                 step2 = step1 + value3;
-                console.log(step2);
             } else if (operator2 === ' - ') {
                 step2 = step1 - value3;
-                console.log(step2);
             }
         } else {
             if (operator2 === ' x ') {
                 step1 = value2 * value3;
-                console.log(step1);
             } else if (operator2 === ' / ') {
                 step1 = value2 / value3;
-                console.log(step1);
             }
             if (operator1 === ' + ') {
                 step2 = value1 + step1;
-                console.log(step2);
             } else if (operator1 === ' - ') {
                 step2 = value1 - step1;
-                console.log(step2);
 
             } else if (operator1 === ' x ') {
                 step2 = value1 * step1;
-                console.log(step2);
 
             } else if (operator1 === ' / ') {
                 step2 = value1 / step1;
-                console.log(step2);
 
             }
         }
@@ -109,12 +96,10 @@ export class MathComponent implements OnInit {
     }
 
     checkAnswer(answer, solution) {
-        console.log(answer, solution);
         this.error = null;
         if (Math.round(parseFloat(answer)) === solution) {
             this.error = '';
             this.success = this.successes[Math.floor(Math.random() * this.successes.length)];
-            console.log(this.success)
             this.count++;
             this.answer = null;
             this.generateProblem();

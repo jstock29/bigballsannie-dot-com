@@ -5,7 +5,7 @@
         <h4>{{count}} problems solved</h4>
         <div style="background: rgba(235, 235, 235, 1); padding: 8px; border-radius: 8px;">
             <p><em>{{question}}</em></p>
-            <mat-form-field>
+            <mat-form-field color="primary">
                 <mat-label>Answer</mat-label>
                 <input matInput [(ngModel)]="answer" cdkFocusInitial>
             </mat-form-field>
@@ -13,7 +13,7 @@
             <p *ngIf="success" class="success-text">{{success}}</p>
         </div>
         <div mat-card-actions>
-            <button mat-flat-button color="accent" (click)="checkAnswer(answer, solution)" class="check-button">Check</button>
+            <button mat-flat-button color="primary" (click)="checkAnswer(answer, solution)" class="check-button">Check</button>
         </div>
     </div>
 
