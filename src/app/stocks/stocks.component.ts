@@ -19,6 +19,8 @@ export class StocksComponent implements OnInit {
     playing = false;
     recentTrades: Trade[] = [];
     momentum = 1.0;
+    chart: any;
+    chartLoop: any;
 
 
     constructor(private ds: DataService) {
@@ -39,19 +41,20 @@ export class StocksComponent implements OnInit {
     scoreGame() {
         console.log(this.ds.leaders);
         console.log(this.ds.money);
-        // this.ds.leaders.forEach((leader) => {
-        //     console.log(leader);
-        //     if (this.ds.money > leader.score) {
-        //         console.log('NEW HIGH SCORE');
-        //     } else {
-        //         console.log('LOSER');
-        //     }
-        // });
+        this.ds.leaders.some((leader) => {
+            console.log(leader);
+            if (this.ds.money > leader.score) {
+                console.log('NEW HIGH SCORE');
+                return true;
+            } else {
+                return false;
+            }
+        });
     }
 
     startGame() {
         this.reset();
-        // this.renderChart();
+        this.renderChart();
         setTimeout(null, 200);
         this.playing = true;
         this.minutes = .25;
@@ -73,6 +76,8 @@ export class StocksComponent implements OnInit {
 
     reset() {
         this.ds.reset();
+        clearInterval(this.chartLoop);
+        this.chart.destroy();
     }
 
     trade(type) {
@@ -103,6 +108,7 @@ export class StocksComponent implements OnInit {
 
     renderChart() {
         const that = this;
+
         this.currentPrice = 0;
 
         function getRandomArbitrary(min, max) {
@@ -112,7 +118,7 @@ export class StocksComponent implements OnInit {
         // todo: remove old chart before reloading a new one
 
         // Create the chart
-        Highcharts.stockChart('container',
+        this.chart = Highcharts.stockChart('container',
             {
                 chart: {
                     events: {
@@ -123,13 +129,15 @@ export class StocksComponent implements OnInit {
                             console.log('Starting Price:', this.currentPrice);
                             let price = this.currentPrice;
 
-                            setInterval(() => {
+                            that.chartLoop = setInterval(() => {
                                 const time = (new Date()).getTime(); // current time
                                 if (that.recentTrades.length > 0) {
                                     if (that.recentTrades[0].type === 'buy') {
-                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price / (that.recentTrades[0].price ** 2);
+                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price /
+                                            (that.recentTrades[0].price ** 2);
                                     } else {
-                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price / (that.recentTrades[0].price ** 2);
+                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price /
+                                            (that.recentTrades[0].price ** 2);
                                     }
                                     that.recentTrades.pop();
                                 } else {
@@ -195,5 +203,6 @@ export class StocksComponent implements OnInit {
 
     ngOnInit(): void {
         this.renderChart();
+        console.log(Highcharts.charts);
     }
 }
