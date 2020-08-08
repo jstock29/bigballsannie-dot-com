@@ -86,6 +86,9 @@ export class AppComponent implements OnInit {
         this.openDialog();
     }
 
+    openAbout() {
+        this.dialog.open(InfoDialog);
+    }
 }
 
 @Component({
@@ -110,5 +113,13 @@ export class EntryDialog {
                 this.data.error = this.data.errors[Math.floor(Math.random() * this.data.errors.length)];
             }
         }
+    }
+}
+@Component({
+    selector: 'app-info-dialog',
+    templateUrl: 'info-dialog.html',
+})
+export class InfoDialog {
+    constructor(public dialogRef: MatDialogRef<InfoDialog>) {
     }
 }

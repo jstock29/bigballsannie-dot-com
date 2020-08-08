@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent, EntryDialog } from './app.component';
+import {AppComponent, EntryDialog, InfoDialog} from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,17 +23,21 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { StocksComponent } from './stocks/stocks.component';
-import { BulletinComponent } from './bulletin/bulletin.component';
+import { AboutDialog, StocksComponent} from './stocks/stocks.component';
+import {BulletinComponent, ImageDialog} from './bulletin/bulletin.component';
 import { TradesComponent } from './trades/trades.component';
 import { TradesDataSource } from './trades/trades-datasource';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { MathComponent } from './math/math.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		EntryDialog,
+		InfoDialog,
+		AboutDialog,
+		ImageDialog,
 		DashboardComponent,
 		StocksComponent,
 		BulletinComponent,
@@ -61,9 +65,10 @@ import { MathComponent } from './math/math.component';
 		MatTableModule,
 		MatPaginatorModule,
 		MatSortModule,
-		DragDropModule
+		DragDropModule,
+		MatToolbarModule
 	],
-	entryComponents: [StocksComponent, BulletinComponent, TradesComponent, LeaderboardComponent, EntryDialog],
+	entryComponents: [StocksComponent, BulletinComponent, TradesComponent, LeaderboardComponent, EntryDialog, ImageDialog, AboutDialog, InfoDialog],
 	providers: [TradesDataSource, TradesComponent],
 	bootstrap: [AppComponent]
 })

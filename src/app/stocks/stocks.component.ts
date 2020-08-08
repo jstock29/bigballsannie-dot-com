@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {DataService, Trade} from '../data.service';
 import theme from 'highcharts/themes/sunset';
+import { MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 const Highcharts = require('highcharts/highstock');
 theme(Highcharts);
@@ -23,7 +24,7 @@ export class StocksComponent implements OnInit {
     chartLoop: any;
 
 
-    constructor(private ds: DataService) {
+    constructor(private ds: DataService, public dialog: MatDialog) {
     }
 
     getPercent(x) {
@@ -173,9 +174,6 @@ export class StocksComponent implements OnInit {
                     inputEnabled: false,
                     selected: 0
                 },
-                title: {
-                    text: 'The Stonk Market'
-                },
                 exporting: {
                     enabled: false
                 },
@@ -201,8 +199,24 @@ export class StocksComponent implements OnInit {
             });
     }
 
+    aboutStonks() {
+        const dialogRef = this.dialog.open(AboutDialog, {
+        });
+    }
+
     ngOnInit(): void {
         this.renderChart();
         console.log(Highcharts.charts);
     }
+}
+
+
+@Component({
+    selector: 'app-about-dialog',
+    templateUrl: 'about-dialog.html',
+})
+export class AboutDialog {
+    constructor(public dialogRef: MatDialogRef<AboutDialog>) {
+    }
+
 }
