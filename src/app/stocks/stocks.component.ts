@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DataService, Trade} from '../data.service';
-import theme from 'highcharts/themes/grid-light';
+// import theme from 'highcharts/themes/grid-light';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 const Highcharts = require('highcharts/highstock');
-theme(Highcharts);
+// theme(Highcharts);
 
 @Component({
     selector: 'app-stocks',
@@ -56,7 +56,7 @@ export class StocksComponent implements OnInit {
     startGame() {
         this.reset();
         this.renderChart();
-        setTimeout(null, 200);
+        setTimeout(null, 400);
         this.playing = true;
         this.minutes = .25;
         this.seconds = this.minutes * 60;

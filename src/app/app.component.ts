@@ -37,9 +37,12 @@ export class AppComponent implements OnInit {
             question: 'Annie has a plot of stunning gold flowers 🌻 arranged in a perfect square grid. If she has 196 flowers total, how many rows are in the plot?',
             solution: 14
         },
-        {question: '', solution: 9},
         {
-            question: 'One of Annie\'s villagers is cursed like Sisyphus to roll a ball 🔵 up a suspiciously linear hill and have it roll back down again for all eternity. The villager\'s GPS shows a horizontal distance traveled of 4 meters and an elevation gain of 3, how many meters long is the slope of the hill?',
+            question: `Annie made chips and dip for her obedient <del>subjects</del> villagers! She made one quart of guacamole 🥑, and each <del>gluttonous rube</del> villager needs 6 tablespoons each for their chips. How many villagers <del>get to eat</del> are able to savor Annie's chips?`,
+            solution: 9
+        },
+        {
+            question: 'One of Annie\'s villagers is cursed like Sisyphus to roll a ball 🔵 up a suspiciously linear hill and have it roll back down again for all eternity. The villager\'s GPS shows a horizontal distance traveled of 4 meters and an elevation gain of 3 meters. How many meters long is the slope of the hill?',
             solution: 5
         },
     ];
@@ -53,15 +56,10 @@ export class AppComponent implements OnInit {
     ];
 
     title = 'Big Balls Island';
-    welcomeText = 'This is Big Balls Island 🏝, the home of the notorious Big Balls Annie. BBA runs things around here, so you better grow some balls or leave fast.';
+    welcomeText = `This is Big Balls Island 🏝, the home of the notorious Big Balls Annie. While you're here, enjoy our adorable village, robust marketplace,
+        and top-notch math education. Explore the beautiful buildings and gardens that Annie personally built and maintains with her vast wealth. But be careful: BBA runs things around here,
+        so you better grow some big balls or leave fast. She won't hesitate to evict you if you stop being useful to her (just ask Kyle). Anyway, have fun!! 💖`;
 
-    sphereVolume(r) {
-        return (4 / 3) * Math.PI * (r ** 3);
-    }
-
-    sphereRadius(V) {
-        return Math.cbrt((3 / 4) * V * (1 / Math.PI));
-    }
 
     openDialog() {
         const choiceIndex = Math.floor(Math.random() * this.tests.length);

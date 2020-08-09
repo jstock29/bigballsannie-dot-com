@@ -1,7 +1,6 @@
 <div class="stock-card">
     <div fxLayout="row">
-        <h2 style="width: 100%;">The Stonk Market 💰
-            </h2>
+        <h2 style="width: 100%;text-align: center;">The Stonk Market 💰</h2>
         <button mat-icon-button aria-label="About Stonks" (click)="aboutStonks()" class="help-button">
             <mat-icon>help_outline</mat-icon>
         </button>
@@ -13,19 +12,19 @@
             <h2>${{currentPrice}}</h2>
         </div>
         <div flex layout="column">
-            <h4>💸 ${{ds.money}}</h4>
-            <h4>🥔 {{ds.turnips}}</h4>
+            <h2>💸 ${{ds.money}}</h2>
+            <h2>🥔 {{ds.turnips}}</h2>
         </div>
     </div>
     <div class="buy-sell" layout="row" fxLayoutAlign="space-evenly center">
-        <button *ngIf="!playing" mat-fab class="trade-button" color="primary" (click)="startGame()">Play</button>
-        <button *ngIf="playing" mat-fab class="trade-button" color="accent" (click)="trade('buy')"
-                [disabled]="ds.money<currentPrice">Buy
+        <button *ngIf="!playing" mat-fab class="trade-button" color="primary" (click)="startGame()" id="play">Play</button>
+        <button *ngIf="playing" mat-fab class="trade-button slide-in-right" color="accent" (click)="trade('buy')"
+                [disabled]="ds.money<currentPrice" id="buy">Buy
         </button>
-        <mat-progress-spinner *ngIf="playing" class="timer" diameter="50" mode="determinate" color="warn"
-                              [value]="getPercent(seconds)"></mat-progress-spinner>
-        <button *ngIf="playing" mat-fab class="trade-button" color="accent" (click)="trade('sell')"
-                [disabled]="ds.turnips===0">Sell
+        <mat-progress-spinner *ngIf="playing" class="timer slide-in-bck-center" diameter="50" mode="determinate" color="warn"
+                              [value]="getPercent(seconds)" id="timer"></mat-progress-spinner>
+        <button *ngIf="playing" mat-fab class="trade-button slide-in-left" color="accent" (click)="trade('sell')"
+                [disabled]="ds.turnips===0" id="sell">Sell
         </button>
     </div>
 </div>

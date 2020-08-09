@@ -17,19 +17,23 @@ export class MathComponent implements OnInit {
     pastAnswered: number;
 
     errors = [
+        '🧐',
+        '😡',
+        '👎👎',
         'Omg WRONG!!',
         'LOSER!',
-        'OLD!',
+        'OLD! 💀',
         'Wow I hate you.',
         'UGH math is so EASY!'
     ];
 
     successes = [
         'YAY! MATH!',
-        'Wow so smart!',
-        '',
-        'Wow I hate you.',
-        'UGH math is so EASY!'
+        'Wow so smart! 🤓',
+        '🤩',
+        '🙌',
+        '🆒',
+        'Math is so EASY!'
     ];
 
     constructor() {
