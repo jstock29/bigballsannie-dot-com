@@ -1,8 +1,11 @@
 <div class="math-card">
-    <h2>Annie's Math Corner</h2>
-    <p>We just love math, so test your skills with this endless math quiz! Remember: PEMDAS is as good as law on Big Balls Island.</p>
+    <h2>Annie's Math Corner 🔢</h2>
+    <p>We just love math, so test your skills with this endless math quiz! Remember: PEMDAS is as good as law on Big
+        Balls Island.</p>
     <div>
-        <h4>{{count}} problems solved</h4>
+        <h4 *ngIf="count>0">{{count}} problems solved today!</h4>
+        <p *ngIf="pastAnswered>0">All-time total correct: <strong>{{pastAnswered}}</strong></p>
+        <p *ngIf="pastAnswered>0">Overall success rate: <strong>{{pastAnswered / (errorCount + pastAnswered) | percent}}</strong></p>
         <div style="background: rgba(235, 235, 235, 1); padding: 8px; border-radius: 8px;">
             <p><em>{{question}}</em></p>
             <mat-form-field color="primary">
@@ -13,7 +16,8 @@
             <p *ngIf="success" class="success-text">{{success}}</p>
         </div>
         <div mat-card-actions>
-            <button mat-flat-button color="primary" (click)="checkAnswer(answer, solution)" class="check-button">Check</button>
+            <button mat-flat-button color="primary" (click)="checkAnswer(answer, solution)" class="check-button">Check
+            </button>
         </div>
     </div>
 

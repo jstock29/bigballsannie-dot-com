@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {stringify} from 'querystring';
 
 @Component({
     selector: 'app-math',
@@ -8,10 +9,12 @@ import {Component, OnInit} from '@angular/core';
 export class MathComponent implements OnInit {
     answer: number;
     count = 0;
+    errorCount = 0;
     question: string;
     solution: number;
     error: string;
     success: string;
+    pastAnswered: number;
 
     errors = [
         'Omg WRONG!!',
@@ -38,6 +41,12 @@ export class MathComponent implements OnInit {
 
     ngOnInit(): void {
         this.generateProblem();
+        if (localStorage.getItem('num_answered')) {
+            this.pastAnswered = parseInt(localStorage.getItem('num_answered'), 10);
+        }
+        if (localStorage.getItem('errors')) {
+            this.errorCount = parseInt(localStorage.getItem('errors'), 10);
+        }
     }
 
     generateProblem() {
@@ -92,6 +101,7 @@ export class MathComponent implements OnInit {
             }
         }
         this.solution = step2;
+        console.log(this.solution);
 
     }
 
@@ -101,6 +111,7 @@ export class MathComponent implements OnInit {
             this.error = '';
             this.success = this.successes[Math.floor(Math.random() * this.successes.length)];
             this.count++;
+            localStorage.setItem('num_answered', this.count.toString());
             this.answer = null;
             this.generateProblem();
         } else {
@@ -109,6 +120,9 @@ export class MathComponent implements OnInit {
                 this.error = `You can't get it right if you don't try!`;
             } else {
                 this.error = this.errors[Math.floor(Math.random() * this.errors.length)];
+                this.errorCount++;
+                localStorage.setItem('errors', this.errorCount.toString());
+
             }
         }
     }

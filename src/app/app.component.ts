@@ -26,27 +26,30 @@ export class AppComponent implements OnInit {
 
     tests = [
         {
-            question: 'Annie has a ball with a volume of 4.19 cubic meters. What is the radius of Annie\'s ball?',
+            question: 'Annie has a ball 🔮 with a volume of 4.19 cubic meters. What is the radius of Annie\'s ball?',
             solution: 1
         },
         {
-            question: 'Annie\'s island has 10 villagers. Four of the villagers eat 7 turnips per day, while the other six eat 10 turnips per day. If Annie buys 1,232 turnips at the Stalk Market, how many days will this feed her villagers?',
+            question: 'Annie\'s island 🏖 has 10 villagers. Four of the villagers eat 7 turnips per day, while the other six eat 10 turnips per day. If Annie buys 1,232 turnips at the Stalk Market 🏛, how many days will this feed her villagers?',
             solution: 14
         },
-        // {
-        //     question: '',
-        //     solution: 14
-        // },
-        // {question: '', solution: 9},
-        // {question: '', solution: 5},
+        {
+            question: 'Annie has a plot of stunning gold flowers 🌻 arranged in a perfect square grid. If she has 196 flowers total, how many rows are in the plot?',
+            solution: 14
+        },
+        {question: '', solution: 9},
+        {
+            question: 'One of Annie\'s villagers is cursed like Sisyphus to roll a ball 🔵 up a suspiciously linear hill and have it roll back down again for all eternity. The villager\'s GPS shows a horizontal distance traveled of 4 meters and an elevation gain of 3, how many meters long is the slope of the hill?',
+            solution: 5
+        },
     ];
     errors = [
-        'Omg WRONG!!',
-        'LOSER!',
-        'OLD!',
+        '❌ Omg WRONG!!',
+        'LOSER! 👎',
+        'OLD! 💀',
         'Wow I hate you.',
-        'Only SMART and YOUNG people are allowed on this island!',
-        'C\'mon these are so EASY!'
+        'Only SMART and YOUNG 👼 people are allowed on this island!',
+        'C\'mon these are so EASY! 🙄'
     ];
 
     title = 'Big Balls Island';
@@ -108,13 +111,14 @@ export class EntryDialog {
             this.dialogRef.close();
         } else {
             if (answer === '' || answer === null) {
-                this.data.error = 'Hi yes you must play the game and no there is no other way. On this island we do math.';
+                this.data.error = 'Hi yes you must play the game and no there is no other way. On this island we do math. 😇';
             } else {
                 this.data.error = this.data.errors[Math.floor(Math.random() * this.data.errors.length)];
             }
         }
     }
 }
+
 @Component({
     selector: 'app-info-dialog',
     templateUrl: 'info-dialog.html',

@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background: #f8f8f8;
+  background: whitesmoke;
   margin: 8px;
   font-family: 'Comic Neue', cursive,sans-serif !important;
 }
@@ -26,8 +26,13 @@ p {
 a {
   font-family: 'Comic Neue', cursive,sans-serif !important;
   color: rgba(0,0,0,0.87);
+  text-decoration: none;
 }
 
 .error-text {
   color: red;
+}
+
+.mat-card-image{
+  margin: 0 !important;
 }

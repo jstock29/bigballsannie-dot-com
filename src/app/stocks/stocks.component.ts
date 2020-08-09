@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DataService, Trade} from '../data.service';
-import theme from 'highcharts/themes/sunset';
+import theme from 'highcharts/themes/grid-light';
 import { MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 const Highcharts = require('highcharts/highstock');

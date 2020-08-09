@@ -1,6 +1,7 @@
 <div class="trade-card">
-    <h4>Trades</h4>
-    <mat-table #table [dataSource]="dataSource">
+    <h2>Trades 💵</h2>
+    <p *ngIf="!table.dataSource" class="mat-caption">Start a game and see your trades here!</p>
+    <mat-table #table [dataSource]="table.dataSource">
         <ng-container matColumnDef="type">
             <mat-header-cell *matHeaderCellDef> Type</mat-header-cell>
             <mat-cell *matCellDef="let trade"> {{trade.type}} </mat-cell>
