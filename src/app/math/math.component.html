@@ -5,7 +5,7 @@
     <div>
         <h4 *ngIf="count>0">{{count}} problems solved today!</h4>
         <p *ngIf="pastAnswered>0">All-time total correct: <strong>{{pastAnswered}}</strong></p>
-        <p *ngIf="pastAnswered>0">Overall success rate: <strong>{{pastAnswered / (errorCount + pastAnswered) | percent}}</strong></p>
+        <p *ngIf="pastAnswered>0">Correct rate: <strong>{{pastAnswered / (errorCount + pastAnswered) | percent}}</strong></p>
         <div style="background: rgba(235, 235, 235, 1); padding: 8px; border-radius: 8px;">
             <p><em>{{question}}</em></p>
             <mat-form-field color="primary">

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DataService, Trade} from '../data.service';
 import theme from 'highcharts/themes/grid-light';
-import { MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 const Highcharts = require('highcharts/highstock');
 theme(Highcharts);
@@ -90,7 +90,7 @@ export class StocksComponent implements OnInit {
                 this.ds.turnips = Math.floor(this.ds.money / this.currentPrice);
                 trade = {type: 'buy', quantity: this.ds.turnips, price: this.currentPrice};
                 this.ds.money = this.ds.money - (this.ds.turnips * this.currentPrice);
-                console.log('bought ', this.ds.turnips, ' turnips at ', this.currentPrice, 'per beet');
+                console.log('bought ', this.ds.turnips, ' turnips at ', this.currentPrice, 'per turnip');
             }
         } else if (type === 'sell') {
             if (this.ds.turnips === 0) {
@@ -116,8 +116,6 @@ export class StocksComponent implements OnInit {
             return Math.random() * (max - min) + min;
         }
 
-        // todo: remove old chart before reloading a new one
-
         // Create the chart
         this.chart = Highcharts.stockChart('container',
             {
@@ -134,17 +132,17 @@ export class StocksComponent implements OnInit {
                                 const time = (new Date()).getTime(); // current time
                                 if (that.recentTrades.length > 0) {
                                     if (that.recentTrades[0].type === 'buy') {
-                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price /
-                                            (that.recentTrades[0].price ** 2);
+                                        const mvmt = getRandomArbitrary(0, that.recentTrades[0].quantity * that.recentTrades[0].price) / 1000;
+                                        that.momentum += mvmt;
                                     } else {
-                                        that.momentum += that.recentTrades[0].quantity * that.recentTrades[0].price /
-                                            (that.recentTrades[0].price ** 2);
+                                        const mvmt = getRandomArbitrary(0, that.recentTrades[0].quantity * that.recentTrades[0].price) / 1000;
+                                        that.momentum -= mvmt;
                                     }
                                     that.recentTrades.pop();
                                 } else {
                                     that.momentum = 1.0;
                                 }
-                                const change = Math.round(getRandomArbitrary(-20, 20) * that.momentum);
+                                const change = Math.round(getRandomArbitrary(-10, 10) * that.momentum);
                                 price += change;
                                 if (price < 1) {
                                     price = 1;
@@ -180,17 +178,19 @@ export class StocksComponent implements OnInit {
                 series: [
                     {
                         name: 'Stonk Price',
-                        data: (function () {
+                        data: (function() {
                             // generate an array of random data
-                            let data = [];
+                            const data = [];
                             const time = (new Date()).getTime();
                             let i;
                             // Initialize past data
                             for (i = -60; i <= 0; i += 1) {
+                                const val = Math.round(getRandomArbitrary(45, 55));
                                 data.push([
                                     time + i * 1000,
-                                    Math.round(getRandomArbitrary(30, 70))
+                                    val
                                 ]);
+                                that.updatePrice(val);
                             }
                             return data;
                         }())
@@ -200,8 +200,7 @@ export class StocksComponent implements OnInit {
     }
 
     aboutStonks() {
-        const dialogRef = this.dialog.open(AboutDialog, {
-        });
+        const dialogRef = this.dialog.open(AboutDialog, {});
     }
 
     ngOnInit(): void {
