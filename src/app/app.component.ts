@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
 		const dialogRef = this.dialog.open(EntryDialog, {
 			width: '99vw',
 			height: '99vh',
-			// disableClose: true,
+			disableClose: true,
 			// backdropClass: 'blackout-backdrop',
 			data: {
 				answer: this.answer,
