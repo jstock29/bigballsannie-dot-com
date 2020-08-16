@@ -1,31 +1,30 @@
 <div class="math-card">
-    <div fxLayout="row">
-        <h2 style="width: 100%;text-align: center;">Annie's Math Corner 🔢</h2>
+  <div fxLayout="row">
+    <h2 style="width: 100%;text-align: center;">Annie's Math Corner 🔢</h2>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around">
+    <img src="assets/images/owl.png" style="max-width: 120px;align-self: center;" (click)="openSnackBar()" />
+  </div>
+  <p>We just love math, so test your skills with this endless math quiz! Remember: PEMDAS is as good as law on Big
+    Balls Island.</p>
+  <div>
+    <h4 *ngIf="count>0"><strong>{{count}}</strong> problems solved today!</h4>
+    <div style="background: rgba(235, 235, 235, 1); padding: 8px; border-radius: 8px;">
+      <p><em>{{question}}</em></p>
+      <mat-form-field color="primary">
+        <mat-label>Answer</mat-label>
+        <input matInput [(ngModel)]="answer" cdkFocusInitial>
+      </mat-form-field>
+      <p *ngIf="error" class="error-text">{{error}}</p>
+      <p *ngIf="success" class="success-text">{{success}}</p>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-around">
-        <img src="assets/images/owl.png" style="max-width: 120px;align-self: center;"/>
+    <div mat-card-actions>
+      <button mat-flat-button color="primary" (click)="checkAnswer(answer, solution)" class="check-button">Check
+      </button>
+      <p *ngIf="pastAnswered>0">All-time total correct: <strong>{{pastAnswered}}</strong></p>
+      <p *ngIf="pastAnswered>0">Correct rate:
+        <strong>{{pastAnswered / (errorCount + pastAnswered) | percent}}</strong></p>
     </div>
-    <p>We just love math, so test your skills with this endless math quiz! Remember: PEMDAS is as good as law on Big
-        Balls Island.</p>
-    <div>
-        <h4 *ngIf="count>0"><strong>{{count}}</strong> problems solved today!</h4>
-        <div style="background: rgba(235, 235, 235, 1); padding: 8px; border-radius: 8px;">
-            <p><em>{{question}}</em></p>
-            <mat-form-field color="primary">
-                <mat-label>Answer</mat-label>
-                <input matInput [(ngModel)]="answer" cdkFocusInitial>
-            </mat-form-field>
-            <p *ngIf="error" class="error-text">{{error}}</p>
-            <p *ngIf="success" class="success-text">{{success}}</p>
-        </div>
-        <div mat-card-actions>
-            <button mat-flat-button color="primary" (click)="checkAnswer(answer, solution)" class="check-button">Check
-            </button>
-            <p *ngIf="pastAnswered>0">All-time total correct: <strong>{{pastAnswered}}</strong></p>
-            <p *ngIf="pastAnswered>0">Correct rate:
-                <strong>{{pastAnswered / (errorCount + pastAnswered) | percent}}</strong></p>
-        </div>
-    </div>
+  </div>
 
 </div>
-

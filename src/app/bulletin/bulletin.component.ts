@@ -71,7 +71,19 @@ export class BulletinComponent implements OnInit {
 			{
 				path: '../../assets/images/booby.png',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
-			}
+			},
+			{
+				path: '../../assets/images/houseparty.png',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/group_pic.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/group_pic_2.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
 		];
 
 		this.videos = [

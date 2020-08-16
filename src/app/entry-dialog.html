@@ -1,23 +1,22 @@
 <div fxLayout="column" fxFill>
-    <h1 mat-dialog-title>Port of Entry</h1>
-    <img src="assets/images/dodo.png" style="max-width: 120px;align-self: center;"/>
-    <div mat-dialog-content>
-        <h4>We don't check passports here. In order to enter the island, answer the following very easy math problem:</h4>
-        <div style="background: rgb(235,235,235); padding: 8px; border-radius: 8px;">
-            <p [innerHTML]="data.question"></p>
-            <mat-form-field>
-                <mat-label>Answer</mat-label>
-                <input matInput [(ngModel)]="data.answer" cdkFocusInitial>
-            </mat-form-field>
-            <p *ngIf="data.error" class="error-text">{{data.error}}</p>
-        </div>
+  <h1 mat-dialog-title>Port of Entry</h1>
+  <img src="assets/images/dodo.png" style="max-width: 120px;align-self: center;" (click)="openSnackBar()" />
+  <div mat-dialog-content>
+    <h4>We don't check passports here. In order to enter the island, answer the following very easy math problem:</h4>
+    <div style="background: rgb(235,235,235); padding: 8px; border-radius: 8px;">
+      <p [innerHTML]="data.question"></p>
+      <mat-form-field>
+        <mat-label>Answer</mat-label>
+        <input matInput [(ngModel)]="data.answer" cdkFocusInitial>
+      </mat-form-field>
+      <p *ngIf="data.error" class="error-text">{{data.error}}</p>
     </div>
-    <div mat-dialog-actions>
-        <button mat-flat-button color="primary" (click)="checkAnswer(data.answer, data.solution)">Check</button>
-    </div>
-    <div fxFlex></div>
-    <div>
-<!--        <p class="super-subtle"><strong *ngIf="true">a</strong>bcd<strong *ngIf="true">e</strong>fgh<strong *ngIf="true">i</strong>jklm<strong *ngIf="true">n</strong>opqrstuvwxyz</p>-->
-    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="primary" (click)="checkAnswer(data.answer, data.solution)">Check</button>
+  </div>
+  <div fxFlex></div>
+  <div>
+    <!--        <p class="super-subtle"><strong *ngIf="true">a</strong>bcd<strong *ngIf="true">e</strong>fgh<strong *ngIf="true">i</strong>jklm<strong *ngIf="true">n</strong>opqrstuvwxyz</p>-->
+  </div>
 </div>
-
