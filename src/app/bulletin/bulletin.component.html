@@ -1,13 +1,11 @@
 <div class="bulletin-board example-boundary">
-    <h2 class="bulletin-title">Big Balls Bulletin</h2>
-    <div *ngFor="let image of images" class="example-box" cdkDrag cdkDragBoundary=".example-boundary"
-         [cdkDragFreeDragPosition]="image.position">
-        <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path)/>
-    </div>
-    <div *ngFor="let vid of videos" class="example-box" cdkDrag cdkDragBoundary=".example-boundary"
-         [cdkDragFreeDragPosition]="vid.position">
-        <video class="thumbnail-image" (click)=expandImage(vid.path)>
-            <source [src]="vid.path" type="video/mp4">
-        </video>
-    </div>
+  <h2 class="bulletin-title">Big Balls Bulletin</h2>
+  <div *ngFor="let image of images" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="image.position">
+    <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path) />
+  </div>
+  <div *ngFor="let vid of videos" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="vid.position">
+    <video class="thumbnail-image" (click)=expandVideo(vid.path)>
+      <source [src]="vid.path" type="video/mp4">
+    </video>
+  </div>
 </div>
