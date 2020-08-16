@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+	production: true,
+	imagePath: 'https://bigballsannie-assets.s3.amazonaws.com/',
+	videoPath: 'https://bigballsannie-assets.s3.amazonaws.com/',
 };
