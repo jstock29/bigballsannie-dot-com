@@ -1,4 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background: whitesmoke;
+  margin: 8px;
+  font-family: 'Comic Neue', cursive,sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Comic Neue', cursive,sans-serif !important;
+}
+
+p {
+  font-family: 'Comic Neue', cursive,sans-serif !important;
+}
+
+a {
+  font-family: 'Comic Neue', cursive,sans-serif !important;
+  color: rgba(0,0,0,0.87);
+  text-decoration: none;
+}
+
+.error-text {
+  color: red;
+}
+
+.mat-card-image{
+  margin: 0 !important;
+}

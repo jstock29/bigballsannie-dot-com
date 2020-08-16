@@ -1,0 +1,171 @@
+.buy-sell {
+  width: 100%;
+  padding: 16px 0;
+}
+
+.reset {
+  width: 100%;
+  padding: 16px 0;
+}
+
+.trade-button {
+  height: 88px;
+  width: 88px;
+}
+
+.stock-card {
+  background: white;
+}
+
+.help-button {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+}
+
+#container{
+  height: 320px;
+  max-height: 320px;
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-bck-center {
+  0% {
+    -webkit-transform: translateZ(100px);
+    transform: translateZ(100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bck-center {
+  0% {
+    -webkit-transform: translateZ(100px);
+    transform: translateZ(100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
+.slide-in-left {
+  -webkit-animation: slide-in-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+  animation: slide-in-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.slide-in-right {
+  -webkit-animation: slide-in-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+  animation: slide-in-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.scale-out-center {
+  -webkit-animation: scale-out-center 0.2s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+  animation: scale-out-center 0.2s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+}
+
+.slide-in-bck-center {
+  -webkit-animation: slide-in-bck-center 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: slide-in-bck-center 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+#sell {
+  animation-name: slide-in-left;
+}
+
+#timer {
+  animation-name: slide-in-bck-center;
+}
+
+
+#buy {
+  animation-name: slide-in-right;
+}
+
+#play {
+  animation-name: scale-out-center;
+}

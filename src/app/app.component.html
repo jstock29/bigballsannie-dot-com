@@ -1,13 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <p>
-    {{welcome_text}}
-  </p>
+    <h1>
+        👋 Welcome to {{ title }}!
+    </h1>
+    <p>
+        {{welcomeText}}
+    </p>
 </div>
 
 <app-dashboard></app-dashboard>
 
 <router-outlet></router-outlet>
+<mat-toolbar style="margin-top: 8px;">
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
+        <p class="mat-caption subtle"><a (click)="openAbout()" class="mat-caption">About</a></p>
+        <div fxFlex></div>
+        <p class="mat-caption subtle">Made with 💙 by <a href="http://www.jaredstock.com" target="_blank">Jared Stock</a></p>
+    </div>
+</mat-toolbar>
+

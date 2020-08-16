@@ -1,30 +1,42 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { TradesDataSource, TradesItem } from './trades-datasource';
+import {Component, ViewChild, OnInit, AfterViewInit} from '@angular/core';
+import {MatTable, MatTableDataSource} from '@angular/material/table';
+import {DataService, Trade} from '../data.service';
 
 @Component({
-  selector: 'app-trades',
-  templateUrl: './trades.component.html',
-  styleUrls: ['./trades.component.scss']
+    selector: 'app-trades',
+    templateUrl: './trades.component.html',
+    styleUrls: ['./trades.component.scss']
 })
-export class TradesComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<TradesItem>;
-  dataSource: TradesDataSource;
+export class TradesComponent implements OnInit {
+    @ViewChild('table') table: MatTable<Trade>;
+    // displayedColumns = ['position', 'name', 'weight', 'symbol'];
+    displayedColumns: string[] = ['type', 'price', 'quantity'];
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+    constructor(private ds: DataService) {
+    }
 
-  ngOnInit() {
-    this.dataSource = new TradesDataSource();
-  }
+    // dataSource = new MatTableDataSource([]);
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-  }
+    applyFilter(filterValue: string) {
+        filterValue = filterValue.trim(); // Remove whitespace
+        filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+        // this.dataSource.filter = filterValue;
+    }
+
+
+    refresh(trades) {
+        let data: Trade[] = [];
+        if (this.table.dataSource) {
+            data = (this.table.dataSource as Trade[]);
+        }
+        // data = this.ds.trades;
+        this.table.dataSource = trades;
+        this.table.renderRows();
+    }
+
+    ngOnInit() {
+        this.ds.tradesSubject.subscribe((data) => {
+            this.refresh(data);
+        });
+    }
 }
