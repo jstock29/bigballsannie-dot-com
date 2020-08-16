@@ -15,6 +15,7 @@ export class BulletinComponent implements OnInit {
 	public innerWidth: number;
 	public images: any;
 	public videos: any;
+	private highest_z = 1;
 
 	constructor(public dialog: MatDialog) {
 		this.innerWidth = window.innerWidth;
@@ -98,7 +99,13 @@ export class BulletinComponent implements OnInit {
 		];
 	}
 
+	updateZ(path) {
+		this.highest_z++;
+		document.getElementById(path).style.zIndex = this.highest_z;
+	}
+
 	expandImage(path) {
+		this.updateZ(path);
 		const dialogRef = this.dialog.open(ImageDialog, {
 			width: '85vh',
 			panelClass: 'full-image',
@@ -111,6 +118,7 @@ export class BulletinComponent implements OnInit {
 	}
 
 	expandVideo(path) {
+		this.updateZ(path);
 		const dialogRef = this.dialog.open(VideoDialog, {
 			width: '85vh',
 			panelClass: 'full-image',

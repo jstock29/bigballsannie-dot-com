@@ -1,9 +1,9 @@
 <div class="bulletin-board example-boundary">
   <h2 class="bulletin-title">Big Balls Bulletin</h2>
-  <div *ngFor="let image of images" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="image.position">
+  <div *ngFor="let image of images" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="image.position" [id]="image.path" (cdkDragStarted)="updateZ(image.path)">
     <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path) />
   </div>
-  <div *ngFor="let vid of videos" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="vid.position">
+  <div *ngFor="let vid of videos" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="vid.position" [id]="vid.path" (cdkDragStarted)="updateZ(vid.path)">
     <video class="thumbnail-image" (click)=expandVideo(vid.path)>
       <source [src]="vid.path" type="video/mp4">
     </video>
