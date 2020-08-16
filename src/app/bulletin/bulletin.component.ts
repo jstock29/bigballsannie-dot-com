@@ -58,7 +58,7 @@ export class BulletinComponent implements OnInit {
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: '../../assets/images/bba3.jpg',
+				path: '../../assets/images/bba2.jpg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
@@ -85,6 +85,34 @@ export class BulletinComponent implements OnInit {
 				path: '../../assets/images/group_pic_2.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
+			{
+				path: '../../assets/images/group_pic_3.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/fiesta_annie_2.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/teetum_annie.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/daddy.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/snacks_annie.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/zoom1.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
+			{
+				path: '../../assets/images/creepy_annie_2.jpeg',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
+			},
 		];
 
 		this.videos = [
@@ -95,13 +123,17 @@ export class BulletinComponent implements OnInit {
 			{
 				path: '../../assets/videos/vid2.mov',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
-			}
+			},
+			{
+				path: '../../assets/videos/biggest_balls.mov',
+				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
+			},
 		];
 	}
 
 	updateZ(path) {
 		this.highest_z++;
-		document.getElementById(path).style.zIndex = this.highest_z;
+		document.getElementById(path).style.zIndex = this.highest_z.toString();
 	}
 
 	expandImage(path) {
