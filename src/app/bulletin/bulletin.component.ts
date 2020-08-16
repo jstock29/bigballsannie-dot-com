@@ -1,9 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { environment } from '../../environments/environment';
-
-const IMAGEPATH = environment.imagePath;
-const VIDEOPATH = environment.videoPath;
 
 
 export interface ImageData {
@@ -38,94 +34,94 @@ export class BulletinComponent implements OnInit {
 
 		this.images = [
 			{
-				path: 'bba.jpg',
+				path: '../../assets/images/bba.jpg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'annie_cute.jpg',
+				path: '../../assets/images/annie_cute.jpg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'annie_cute_2.jpg',
+				path: '../../assets/images/annie_cute_2.jpg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'creepy_annie.png',
+				path: '../../assets/images/creepy_annie.png',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'beer_annie.jpeg',
+				path: '../../assets/images/beer_annie.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'bba2.jpg',
+				path: '../../assets/images/bba2.jpg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'bby_annie.png',
+				path: '../../assets/images/bby_annie.png',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'fiesta_annie.jpeg',
+				path: '../../assets/images/fiesta_annie.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'booby.png',
+				path: '../../assets/images/booby.png',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'houseparty.png',
+				path: '../../assets/images/houseparty.png',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'group_pic.jpeg',
+				path: '../../assets/images/group_pic.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'group_pic_2.jpeg',
+				path: '../../assets/images/group_pic_2.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'group_pic_3.jpeg',
+				path: '../../assets/images/group_pic_3.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'fiesta_annie_2.jpeg',
+				path: '../../assets/images/fiesta_annie_2.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'teetum_annie.jpeg',
+				path: '../../assets/images/teetum_annie.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'daddy.jpeg',
+				path: '../../assets/images/daddy.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'snacks_annie.jpeg',
+				path: '../../assets/images/snacks_annie.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'zoom1.jpeg',
+				path: '../../assets/images/zoom1.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 			{
-				path: 'creepy_annie_2.jpeg',
+				path: '../../assets/images/creepy_annie_2.jpeg',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 450) }
 			},
 		];
 
 		this.videos = [
 			{
-				path: 'vid1.mov',
+				path: '../../assets/videos/vid1.mov',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'vid2.mov',
+				path: '../../assets/videos/vid2.mov',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 			{
-				path: 'biggest_balls.mov',
+				path: '../../assets/videos/biggest_balls.mov',
 				position: { x: this.getRandomArbitrary(0, this.innerWidth), y: this.getRandomArbitrary(0, 400) }
 			},
 		];
