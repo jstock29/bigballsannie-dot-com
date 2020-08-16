@@ -59,7 +59,7 @@ export class StocksComponent implements OnInit {
 		this.renderChart();
 		setTimeout(null, 400);
 		this.playing = true;
-		this.minutes = .25;
+		this.minutes = 1.5;
 		this.seconds = this.minutes * 60;
 		this.timeLimit = this.seconds;
 		this.interval = setInterval(() => {
