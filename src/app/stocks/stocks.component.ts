@@ -25,7 +25,7 @@ export class StocksComponent implements OnInit {
 	chartLoop: any;
 
 
-	constructor(private ds: DataService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
+	constructor(public ds: DataService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
 	}
 
 	getPercent(x) {
