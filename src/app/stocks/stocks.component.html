@@ -5,6 +5,9 @@
       <mat-icon>help_outline</mat-icon>
     </button>
   </div>
+  <div *ngIf="highScore">
+    <p>High Score: ${{highScore}}</p>
+  </div>
   <div id='container' fxFlexFill></div>
   <div layout="row" fxLayoutAlign="space-around center">
     <div flex layout="column">

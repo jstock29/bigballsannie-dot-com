@@ -23,10 +23,16 @@ export class StocksComponent implements OnInit {
 	momentum = 1.0;
 	chart: any;
 	chartLoop: any;
+	highScore: number;
+	newHighScore: boolean;
 
 
 	constructor(public ds: DataService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
+		if (localStorage.getItem('high_score')) {
+			this.highScore = parseInt(localStorage.getItem('high_score'));
+		}
 	}
+
 
 	getPercent(x) {
 		return (x / this.timeLimit) * 100;
@@ -41,17 +47,27 @@ export class StocksComponent implements OnInit {
 	}
 
 	scoreGame() {
-		console.log(this.ds.leaders);
 		console.log(this.ds.money);
-		this.ds.leaders.some((leader) => {
-			console.log(leader);
-			if (this.ds.money > leader.score) {
-				console.log('NEW HIGH SCORE');
-				return true;
+		if (this.ds.money > 100) {
+			if (localStorage.getItem('high_score')) {
+				if (this.ds.money > parseInt(localStorage.getItem('high_score'))) {
+					console.log('NEW HIGH SCORE');
+					localStorage.setItem('high_score', this.ds.money);
+					this.highScore = this.ds.money;
+					this.newHighScore = true;
+					this._snackBar.open(`Congrats! New high score of $` + this.highScore.toString() + '!!', `I'm the best!`, {
+						duration: 5000,
+					});
+				}
 			} else {
-				return false;
+				console.log('NEW HIGH SCORE');
+				localStorage.setItem('high_score', this.ds.money);
+				this.highScore = this.ds.money;
+				this._snackBar.open(`Congrats! New high score of $` + this.highScore.toString() + '!!', `I'm the best!`, {
+					duration: 5000,
+				});
 			}
-		});
+		}
 	}
 
 	startGame() {
@@ -207,6 +223,9 @@ export class StocksComponent implements OnInit {
 	ngOnInit(): void {
 		this.renderChart();
 		console.log(Highcharts.charts);
+		if (localStorage.getItem('high_score')) {
+			this.highScore = parseInt(localStorage.getItem('high_score'));
+		}
 	}
 
 	openSnackBar() {

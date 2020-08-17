@@ -1,22 +1,20 @@
 <div class="grid-container" fxLayout="column" fxLayoutGap="16px" fxFlex>
-  <div fxFlex=100>
+  <div fxFlex>
     <mat-card class="dashboard-card" fxFlex>
       <mat-card-content>
         <app-bulletin></app-bulletin>
       </mat-card-content>
     </mat-card>
   </div>
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="8px" fxFlex=50>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="8px" fxFlex>
     <div fxFlex=50>
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-        </mat-card-header>
+      <mat-card class="dashboard-card" fxFlex>
         <mat-card-content class="dashboard-card-content">
           <app-stocks></app-stocks>
         </mat-card-content>
       </mat-card>
     </div>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="8px" fxFlex=50>
+    <div fxFlex=50>
       <mat-card class="dashboard-card" fxFlex>
         <mat-card-content class="dashboard-card-content">
           <app-trades></app-trades>
@@ -29,7 +27,7 @@
       <!--      </mat-card>-->
     </div>
   </div>
-  <div fxFlex=100>
+  <div fxFlex>
     <mat-card class="dashboard-card gutter-bottom" fxFlex>
       <mat-card-content>
         <app-math></app-math>
