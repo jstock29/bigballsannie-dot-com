@@ -4,8 +4,8 @@
     <img [src]="image.path" class="thumbnail-image" (click)=expandImage(image.path) />
   </div>
   <div *ngFor="let vid of videos" class="example-box" cdkDrag cdkDragBoundary=".example-boundary" [cdkDragFreeDragPosition]="vid.position" [id]="vid.path" (cdkDragStarted)="updateZ(vid.path)">
-    <video class="thumbnail-image" (click)=expandVideo(vid.path) preload="metadata" controls="true" playsinline>
-      <source [src]="vid.path" type="video/mp4">
+    <video class="thumbnail-image" (click)=expandVideo(vid.path) preload="metadata">
+      <source [src]="vid.path+'#t=0.1'" type="video/mp4">
     </video>
   </div>
 </div>

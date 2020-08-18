@@ -52,7 +52,7 @@ export class StocksComponent implements OnInit {
 			if (localStorage.getItem('high_score')) {
 				if (this.ds.money > parseInt(localStorage.getItem('high_score'))) {
 					console.log('NEW HIGH SCORE');
-					localStorage.setItem('high_score', this.ds.money);
+					localStorage.setItem('high_score', this.ds.money.toString());
 					this.highScore = this.ds.money;
 					this.newHighScore = true;
 					this._snackBar.open(`Congrats! New high score of $` + this.highScore.toString() + '!!', `I'm the best!`, {
@@ -61,7 +61,7 @@ export class StocksComponent implements OnInit {
 				}
 			} else {
 				console.log('NEW HIGH SCORE');
-				localStorage.setItem('high_score', this.ds.money);
+				localStorage.setItem('high_score', this.ds.money.toString());
 				this.highScore = this.ds.money;
 				this._snackBar.open(`Congrats! New high score of $` + this.highScore.toString() + '!!', `I'm the best!`, {
 					duration: 5000,
