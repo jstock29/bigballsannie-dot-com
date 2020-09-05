@@ -106,7 +106,7 @@ export class EntryDialog {
 		this.data.error = null;
 		if (Math.round(parseFloat(answer)) === solution) {
 			this.dialogRef.close();
-		} else if (answer === '1141495' || answer === 'jared') {
+		} else if (answer === '1141495' || answer.toLowerCase() === 'jared' || answer.toLowerCase() === 'annie') {
 			this.dialogRef.close();
 		} else {
 			if (answer === '' || answer === null) {

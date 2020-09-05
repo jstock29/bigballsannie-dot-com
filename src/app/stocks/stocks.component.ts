@@ -104,10 +104,11 @@ export class StocksComponent implements OnInit {
 			if (this.ds.money < this.currentPrice) {
 				console.log('NOT ENOUGH MONEY');
 			} else {
-				this.ds.turnips = Math.floor(this.ds.money / this.currentPrice);
-				trade = { type: 'buy', quantity: this.ds.turnips, price: this.currentPrice };
-				this.ds.money = this.ds.money - (this.ds.turnips * this.currentPrice);
-				console.log('bought ', this.ds.turnips, ' turnips at ', this.currentPrice, 'per turnip');
+				const numTurnips = Math.floor(this.ds.money / this.currentPrice);
+				trade = { type: 'buy', quantity: numTurnips, price: this.currentPrice };
+				this.ds.money -= (numTurnips * this.currentPrice);
+				this.ds.turnips += numTurnips;
+				console.log('bought ', numTurnips, ' turnips at ', this.currentPrice, 'per turnip');
 			}
 		} else if (type === 'sell') {
 			if (this.ds.turnips === 0) {
@@ -116,7 +117,7 @@ export class StocksComponent implements OnInit {
 				const saleValue = this.ds.turnips * this.currentPrice;
 				console.log('sold for $', saleValue);
 				trade = { type: 'sell', quantity: this.ds.turnips, price: this.currentPrice };
-				this.ds.money = this.ds.money + saleValue;
+				this.ds.money += saleValue;
 				this.ds.turnips = 0;
 			}
 		}
